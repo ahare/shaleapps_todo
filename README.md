@@ -40,7 +40,7 @@ ok    shaleapps_todo/server 0.009s
 ### Running the server
 
 ```
-$./shaleapps_todo
+$ ./shaleapps_todo
 ToDo server listening on :8080...
 ```
 
