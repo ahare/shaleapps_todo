@@ -8,10 +8,10 @@ The only external dependency is https://github.com/mattn/go-sqlite3.
 
 ### Design thought process
 
-I intentionally didn't use an ORM for talking to the database. I agree
+I intentionally didn't use an ORM. I agree
 with the logic in 
 [Golang, ORMs, and why I am still not using one](http://www.hydrogen18.com/blog/golang-orms-and-why-im-still-not-using-one.html)
-and find that ORMs don't fit well with statically typed languages and the benefit
+and believe that ORMs don't fit well with statically typed languages and the benefit
 they offer doesn't outweigh the performance hit or the black-box they create in
 the app.
 
