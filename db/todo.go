@@ -17,6 +17,7 @@ func init() {
 	queries["todos.findById"] = `SELECT text, done FROM todos WHERE id = ?;`
 	queries["todos.findByText"] = `SELECT id, text, done FROM todos WHERE text LIKE ?;`
 	queries["todos.findByDone"] = `SELECT id, text, done FROM todos WHERE done = ?;`
+	queries["todos.all"] = `SELECT id, text, done FROM todos;`
 	queries["todos.delete"] = `DELETE FROM todos WHERE id = ?;`
 }
 
@@ -52,6 +53,10 @@ func FindTodosByText(text string) ([]*Todo, error) {
 
 func FindTodosByDone(done bool) ([]*Todo, error) {
 	return findTodos("todos.findByDone", done)
+}
+
+func AllTodos() ([]*Todo, error) {
+	return findTodos("todos.all", []interface{}{}...)
 }
 
 func findTodos(queryName string, values ...interface{}) ([]*Todo, error) {

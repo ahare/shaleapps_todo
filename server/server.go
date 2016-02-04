@@ -102,6 +102,7 @@ func findTodosHandler(w http.ResponseWriter, r *http.Request) {
 	values := r.URL.Query()
 
 	doneStr := values.Get("done")
+	text := values.Get("text")
 	if len(doneStr) > 0 {
 		done, err := strconv.ParseBool(doneStr)
 		if err != nil {
@@ -113,11 +114,14 @@ func findTodosHandler(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), 500)
 			return
 		}
-	}
-
-	text := values.Get("text")
-	if len(text) > 0 {
+	} else if len(text) > 0 {
 		todos, err = db.FindTodosByText(text)
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+			return
+		}
+	} else {
+		todos, err = db.AllTodos()
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 			return

@@ -117,6 +117,18 @@ Content-Length: 138
 [{"id":1,"text":"Pick up milk","done":true},{"id":2,"text":"Drink milk","done":false},{"id":3,"text":"Throw away milk jug","done":false}]
 ```
 
+Get all ToDos:
+
+```
+$ curl -i ':8080/todos?text=milk'
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Wed, 03 Feb 2016 19:32:47 GMT
+Content-Length: 138
+
+[{"id":1,"text":"Pick up milk","done":true},{"id":2,"text":"Drink milk","done":false},{"id":3,"text":"Throw away milk jug","done":false},{"id":4,"text":"Wash the car","done":false}]
+```
+
 Delete a ToDo:
 
 ```
