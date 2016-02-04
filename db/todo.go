@@ -82,6 +82,10 @@ func findTodos(queryName string, values ...interface{}) ([]*Todo, error) {
 		rows.Scan(&id, &text, &done)
 		todos = append(todos, &Todo{id.Int64, text.String, done.Bool})
 	}
+	err = rows.Err()
+	if err != nil {
+		return nil, err
+	}
 
 	return todos, nil
 }
